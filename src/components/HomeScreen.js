@@ -1,8 +1,10 @@
 import React from 'react';
-import { Button, Image, View, Text } from 'react-native';
+import { StyleSheet, Platform, Image, Text, View, Button } from 'react-native';
 import { createStackNavigator, createAppContainer } from 'react-navigation';
 
 export default class HomeScreen extends React.Component {
+  state = { currentUser: null }
+
   static navigationOptions = {
     headerTitle: 'Buts',
     headerRight: (
@@ -15,9 +17,11 @@ export default class HomeScreen extends React.Component {
   };
 
   render() {
+    const { currentUser } = this.state
+
     return (
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        <Text>Home Screen</Text>
+        <Text>Hi {currentUser && currentUser.email}!</Text>
         <Button
           title="Go to Details"
           onPress={() => {
