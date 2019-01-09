@@ -4,15 +4,28 @@ import firebase from 'react-native-firebase';
 
 export default class Login extends React.Component {
   state = { email: '', password: '', errorMessage: null }
+
+  static navigationOptions = {
+    headerTitle: 'Login',
+    headerRight: (
+      <Button
+        onPress={() => this.props.navigation.navigate('SignUp')}
+        title="Sign up"
+      />
+    ),
+  };
+
   handleLogin = () => {
     const { email, password } = this.state
     firebase
       .auth()
       .signInWithEmailAndPassword(email, password)
-      .then(() => this.props.navigation.navigate('Main'))
+      .then(() => this.props.navigation.navigate('Home'))
       .catch(error => this.setState({ errorMessage: error.message }))
   }
+
   render() {
+    console.log(this.state)
     return (
       <View style={styles.container}>
         <Text>Login</Text>
