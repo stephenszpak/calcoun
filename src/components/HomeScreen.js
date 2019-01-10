@@ -46,10 +46,10 @@ export default class HomeScreen extends React.Component {
           }}
         />
         <Button
-          title="Go to Signup"
+          title="Go to Boards"
           onPress={() => {
             /* 1. Navigate to the Details route with params */
-            this.props.navigation.navigate('SignUp', {
+            this.props.navigation.navigate('Board', {
               itemId: 86,
               otherParam: 'anything you want here',
             });
